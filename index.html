@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fear†Killer Rating Leaderboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Fear†Killer PvP Leaderboard</h1>
+    <form id="playerForm">
+      <input type="text" id="name" placeholder="Player Name" required />
+      <input type="number" id="rp" placeholder="RP" required />
+      <input type="number" id="hp" placeholder="HP" required />
+      <input type="number" id="lp" placeholder="LP" required />
+      <button type="submit">Add Player</button>
+    </form>
+    <table id="leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>RP</th>
+          <th>HP</th>
+          <th>LP</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
