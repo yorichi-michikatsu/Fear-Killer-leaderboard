@@ -1,9 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import json
 import os
 
 app = Flask(__name__)
-
 DATA_FILE = 'leaderboard_data.json'
 
 # Load existing data or initialize empty data
