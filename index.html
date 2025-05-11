@@ -256,6 +256,9 @@
       // Reset password field when logging out
       document.getElementById("admin-password").value = "";
     }
-  </script>
-</body>
+  </script> <!-- Close the inline script -->
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
 </html>
