@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fear†Killer Systems</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+    background: #000;
+    background-image:
+      linear-gradient(135deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(225deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(45deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(315deg, rgba(20,20,20,0.4) 25%, #000 25%);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    animation: fadeBG 20s infinite alternate linear;
+  }
+
+  @keyframes fadeBG {
+    0% { background-color: #000; }
+    100% { background-color: #0a0011; }
+  }
+
+  header {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: linear-gradient(to right, #1a1a2f, #0c0c0c, #1a1a2f);
+    border-bottom: 3px solid #ff003c;
+    box-shadow: 0 0 30px #ff003caa, 0 0 50px #7200ffaa inset;
+    position: relative;
+    animation: fadeSlideDown 1.8s ease-out;
+  }
+
+  h1 {
+    font-size: 3.8em;
+    color: #ff003c;
+    text-shadow: 0 0 16px #ff003c, 0 0 26px #ff3c78, 0 0 40px #ff0077;
+    margin: 0;
+    letter-spacing: 2px;
+    animation: glowPulse 3s infinite ease-in-out;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 10px #ff003c, 0 0 22px #ff3c78; }
+    50% { text-shadow: 0 0 24px #ff0077, 0 0 36px #ff003c; }
+  }
+
+  nav {
+    text-align: center;
+    margin: 30px 0;
+    animation: fadeSlideUp 1.6s ease-out;
+  }
+
+  button {
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+    color: #00eaff;
+    border: 2px solid #7200ff;
+    padding: 14px 28px;
+    margin: 8px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 18px #7200ff99, 0 0 28px #00eaff33;
+    letter-spacing: 1px;
+  }
+
+  button:hover {
+    background-color: #7200ff;
+    color: #000;
+    transform: scale(1.08);
+    box-shadow: 0 0 26px #00eaff, 0 0 42px #7200ff;
+  }
+
+  .section {
+    display: none;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(15, 15, 30, 0.92);
+    border: 3px solid #ff003c;
+    border-radius: 20px;
+    box-shadow: 0 0 35px #ff003c88, 0 0 55px #7200ff55;
+    backdrop-filter: blur(6px);
+    animation: sectionFade 1.5s ease-out forwards;
+  }
+
+  @keyframes sectionFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .section h2 {
+    color: #00eaff;
+    text-shadow: 0 0 12px #00eaff, 0 0 20px #00eaff;
+    font-size: 2.2em;
+    margin-top: 0;
+  }
+
+  ul, p, li, td {
+    font-size: 1.15em;
+    line-height: 1.65;
+    color: #ccc;
+  }
+
+  .tier, .note {
+    margin-bottom: 20px;
+  }
+
+  .note {
+    font-style: italic;
+    color: #aaa;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 0 14px #444;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    border: 1px solid #555;
+    padding: 14px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #111;
+    color: #ff003c;
+    text-shadow: 0 0 10px #ff003c;
+  }
+
+  tr:nth-child(even) {
+    background-color: #1a1a2a;
+  }
+
+  .lp-title {
+    color: #00eaff;
+    text-shadow: 0 0 8px #00eaff;
+  }
+
+  .glow-box {
+    border: 2px solid #7200ff;
+    padding: 20px;
+    border-radius: 16px;
+    background: radial-gradient(circle at top left, rgba(20,20,50,0.3), rgba(0,0,0,0.2));
+    box-shadow: 0 0 24px #7200ffaa, 0 0 16px #00eaff44 inset;
+    margin-bottom: 30px;
+    animation: pulseGlow 3.2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 24px #7200ffaa, 0 0 16px #00eaff44 inset; }
+    50% { box-shadow: 0 0 30px #7200ffcc, 0 0 22px #00eaff66 inset; }
+  }
+
+  footer {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    border-top: 1px solid #222;
+    margin-top: 70px;
+    font-size: 0.9em;
+    animation: fadeSlideUp 2s ease-in;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+  <script>
+    function showSection(id) {
+      var sections = document.getElementsByClassName("section");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+      }
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Fear†Killer PvP Progression Systems</h1>
+  </header>
+  <nav>
+    <button onclick="showSection('rp')">RP - Rank Points</button>
+    <button onclick="showSection('hp')">HP - Honor Points</button>
+    <button onclick="showSection('lp')">LP - Legacy Points</button>
+    <button onclick="showSection('schedule')">Match Schedule</button>
+    <button onclick="showSection('rules')">Rules</button>
+    <button onclick="window.open('https://docs.google.com/spreadsheets/d/e/2PACX-1vT6rjboMviuuhnTAVcJJ6trTlBGk6S5CoIO_06KzDS1oCT6GgP0AWkT7wyg3b6J3Oa5QOtrQ0vzJttH/pubhtml', '_blank')">Leaderboard</button>
+  </nav>
+
+  <div id="rp" class="section">
+    <h2>RP - Rank Points</h2>
+    <p><strong>Fire★Bolt Ranking System</strong></p>
+    <ul>
+      <li><strong>Victory:</strong> +3 RP</li>
+      <li><strong>Draw:</strong> +1 RP</li>
+      <li><strong>Loss:</strong> 0 RP</li>
+      <li><strong>Disqualification:</strong> -1 RP</li>
+      <li><strong>Elite Duel Win:</strong> +2 RP</li>
+      <li><strong>Voidblade Challenge (Partial):</strong> +6 RP</li>
+    </ul>
+    <div class="note">* Only official/refereed matches count toward RP.</div>
+    <div class="tier"><strong>Bronze (0–9 RP):</strong> Training & experimentation.</div>
+    <div class="tier"><strong>Silver (10–19 RP):</strong> Protocol basics, eligible for mentoring.</div>
+    <div class="tier"><strong>Gold (20–34 RP):</strong> Mid-tier. Tournament-eligible.</div>
+    <div class="tier"><strong>Platinum (35–49 RP):</strong> Advanced. May train others.</div>
+    <div class="tier"><strong>Blazing Core (50+ RP):</strong> Elite. May lead matches.</div>
+    <div class="tier"><strong>Solar Flame (75+ RP):</strong> Must defeat 3 Blazing Core.</div>
+    <div class="tier"><strong>Ember Warden (100+ RP):</strong> Trusted host/mod role.</div>
+    <div class="tier"><strong>Crimson Saint:</strong> Selected by leaders.</div>
+    <div class="tier"><strong>Voidblade Prime:</strong> 100+ RP & victory over 3 elites. Throne Challenge winner.</div>
+  </div>
+
+  <div id="hp" class="section">
+    <h2>HP - Honor Points</h2>
+    <table>
+      <thead>
+        <tr><th>Positive Action</th><th>HP Gain</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win without toxicity</td><td>+2</td></tr>
+        <tr><td>Help train lower ranks</td><td>+3</td></tr>
+        <tr><td>Report bugs respectfully</td><td>+2</td></tr>
+        <tr><td>3 clean matches</td><td>+5</td></tr>
+        <tr><td>Mentor for a week</td><td>+5</td></tr>
+        <tr><td>Host/referee matches</td><td>+2–4</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr><th>Negative Action</th><th>HP Loss</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trash talk/toxicity</td><td>-3</td></tr>
+        <tr><td>Cheating/exploiting</td><td>-5</td></tr>
+        <tr><td>Disrespect or rage quit</td><td>-2 to -5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Titles:</strong> 0-4 Neutral, 5-14 Respected, 15-24 Honorbound, 25-34 Paladin, 35-49 Guardian, 50+ Legend</p>
+  </div>
+
+  <div id="lp" class="section">
+    <h2 class="lp-title">LP - Legacy Points</h2>
+    <table>
+      <thead>
+        <tr><th>Action</th><th>LP Earned</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win major tournament</td><td>+5</td></tr>
+        <tr><td>Host PvP event</td><td>+3</td></tr>
+        <tr><td>Defeat Voidblade Prime</td><td>+4</td></tr>
+        <tr><td>Hold Voidblade title (1 month)</td><td>+3</td></tr>
+        <tr><td>Top performer (3 months)</td><td>+2</td></tr>
+        <tr><td>Hall of Legends</td><td>+5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Legacy Titles:</strong> 10 LP - Veteran, 20 - Flamebearer, 30 - Shadow, 40 - Duelmaster, 50 - Immortal</p>
+    <p class="note">LPs never expire. Holders get privileges like early access, council role, exclusive cosmetics.</p>
+  </div>
+
+  <div id="schedule" class="section">
+    <h2>Weekly Duel Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time Slot</th>
+          <th>Match Type</th>
+          <th>Allowed Ranks</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Casual Warmup</td>
+          <td>All ranks</td>
+          <td>Easy warmup match, perfect for training</td>
+        </tr>
+        <tr>
+          <td>Monday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Mentor vs Rookie</td>
+          <td>Bronze to Silver</td>
+          <td>Higher ranks mentor lower players</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Ranked Duel</td>
+          <td>Silver+</td>
+          <td>Win adds fire★bolt points</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Open Duel</td>
+          <td>All ranks</td>
+          <td>Anyone can challenge anyone</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Randomizer Duel</td>
+          <td>All ranks</td>
+          <td>Opponents assigned randomly</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Tactical Duel (No swords/tools)</td>
+          <td>Gold+</td>
+          <td>Focuses on tactics (bows, blocks, etc.)</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>3:00 – 5:00 PM</td>
+          <td>Free Play Day</td>
+          <td>All ranks</td>
+          <td>Open time for anyone to practice or run custom CS</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Elite Clash</td>
+          <td>Blazing Core+</td>
+          <td>High-tier battle with honor points</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Voidblade Prime Challenge</td>
+          <td>All ranks (if earned)</td>
+          <td>Must request challenge one day before</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Tournament Matches (3 Rounds)</td>
+          <td>Gold+ (w/ qualifiers)</td>
+          <td>Scheduled duels--semi-final and final</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Leader's Event / Fun Match</td>
+          <td>All ranks</td>
+          <td>Random events like tag, potion ban, etc.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="rules" class="section">
+    <h1>Fear Killer PvP Provisions</h1>
+    <p>This document serves as the official codified PvP legal framework under the Fear Killer Rule Provisions.</p>
+    <h2>Rules</h2>
+    <ul>
+      <li><strong>No Bed Destruction</strong> - Violator's own bed will be removed.</li>
+      <li><strong>No Fireball Usage</strong> - Banned for knockback abuse.</li>
+      <li><strong>No Knockback Dory</strong> - Trident banned.</li>
+      <li><strong>No Wind Charges</strong></li>
+      <li><strong>No Tactical Totems</strong></li>
+      <li><strong>No Potions or Potion Orbs</strong></li>
+      <li><strong>No Third-Party Interference</strong></li>
+      <li><strong>Rematch Protocol</strong> if agreed or ordered by ref.</li>
+      <li><strong>Referee/Admin Oversight</strong> mandatory.</li>
+      <li><strong>Allowed Items:</strong> Tracker Compass, Bridge Builder, Ender Pearls, Golden Apples.</li>
+      <li><strong>No Spawn Killing</strong></li>
+      <li><strong>No Teaming in FFA</strong></li>
+      <li><strong>Health Reset Between Rounds</strong></li>
+      <li><strong>Match Confirmation & Countdown</strong></li>
+      <li><strong>Map Selection Clause</strong></li>
+      <li><strong>Gear Check by Referee</strong></li>
+    </ul>
+    <h2>Penalties</h2>
+    <ul>
+      <li><strong>1st Offense:</strong> Verbal Warning</li>
+      <li><strong>2nd Offense:</strong> Removal from Server</li>
+      <li><strong>3rd Offense:</strong> PvP Suspension</li>
+    </ul>
+  </div>
+  </body>
+  </html>
+  
