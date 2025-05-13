@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fear†Killer Systems</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+  body {
+    background: linear-gradient(145deg, #000000, #0f0f1a, #1c1c2b);
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ff003c;
+    text-shadow: 0 0 8px #ff003c, 0 0 20px #ff3c78, 0 0 30px #ff0077;
+  }
+
+  nav {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  button {
+    background-color: #0a0a0a;
+    color: #00eaff;
+    border: 2px solid #7200ff;
+    padding: 12px 25px;
+    margin: 6px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 0 10px #7200ff, 0 0 20px #00eaff33;
+  }
+
+  button:hover {
+    background-color: #7200ff;
+    color: #000;
+    box-shadow: 0 0 15px #00eaff, 0 0 25px #7200ff;
+  }
+
+  .section {
+    display: none;
+    padding: 20px;
+    margin: 20px auto;
+    border: 2px solid #ff003c;
+    border-radius: 10px;
+    background-color: rgba(15, 15, 30, 0.95);
+    box-shadow: 0 0 20px #ff003c, 0 0 30px #7200ff55;
+    max-width: 900px;
+  }
+
+  ul, p, li, td {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #ccc;
+  }
+
+  .tier, .note {
+    margin-bottom: 15px;
+  }
+
+  .note {
+    font-style: italic;
+    color: #888;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+
+  th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #111;
+    color: #ff003c;
+    text-shadow: 0 0 6px #ff003c;
+  }
+
+  tr:nth-child(even) {
+    background-color: #1a1a2a;
+  }
+
+  .lp-title {
+    color: #00eaff;
+    text-shadow: 0 0 6px #00eaff;
+  }
+</style>
+  <script>
+    function showSection(id) {
+      var sections = document.getElementsByClassName("section");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+      }
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Fear†Killer PvP Progression Systems</h1>
+  </header>
+  <nav>
+    <button onclick="showSection('rp')">RP - Rank Points</button>
+    <button onclick="showSection('hp')">HP - Honor Points</button>
+    <button onclick="showSection('lp')">LP - Legacy Points</button>
+    <button onclick="showSection('schedule')">Match Schedule</button>
+    <button onclick="showSection('rules')">Rules</button>
+    <button onclick="window.open('https://docs.google.com/spreadsheets/d/e/2PACX-1vT6rjboMviuuhnTAVcJJ6trTlBGk6S5CoIO_06KzDS1oCT6GgP0AWkT7wyg3b6J3Oa5QOtrQ0vzJttH/pubhtml', '_blank')">Leaderboard</button>
+  </nav>
+
+  <div id="rp" class="section">
+    <h2>RP - Rank Points</h2>
+    <p><strong>Fire★Bolt Ranking System</strong></p>
+    <ul>
+      <li><strong>Victory:</strong> +3 RP</li>
+      <li><strong>Draw:</strong> +1 RP</li>
+      <li><strong>Loss:</strong> 0 RP</li>
+      <li><strong>Disqualification:</strong> -1 RP</li>
+      <li><strong>Elite Duel Win:</strong> +2 RP</li>
+      <li><strong>Voidblade Challenge (Partial):</strong> +6 RP</li>
+    </ul>
+    <div class="note">* Only official/refereed matches count toward RP.</div>
+    <div class="tier"><strong>Bronze (0–9 RP):</strong> Training & experimentation.</div>
+    <div class="tier"><strong>Silver (10–19 RP):</strong> Protocol basics, eligible for mentoring.</div>
+    <div class="tier"><strong>Gold (20–34 RP):</strong> Mid-tier. Tournament-eligible.</div>
+    <div class="tier"><strong>Platinum (35–49 RP):</strong> Advanced. May train others.</div>
+    <div class="tier"><strong>Blazing Core (50+ RP):</strong> Elite. May lead matches.</div>
+    <div class="tier"><strong>Solar Flame (75+ RP):</strong> Must defeat 3 Blazing Core.</div>
+    <div class="tier"><strong>Ember Warden (100+ RP):</strong> Trusted host/mod role.</div>
+    <div class="tier"><strong>Crimson Saint:</strong> Selected by leaders.</div>
+    <div class="tier"><strong>Voidblade Prime:</strong> 100+ RP & victory over 3 elites. Throne Challenge winner.</div>
+  </div>
+
+  <div id="hp" class="section">
+    <h2>HP - Honor Points</h2>
+    <table>
+      <thead>
+        <tr><th>Positive Action</th><th>HP Gain</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win without toxicity</td><td>+2</td></tr>
+        <tr><td>Help train lower ranks</td><td>+3</td></tr>
+        <tr><td>Report bugs respectfully</td><td>+2</td></tr>
+        <tr><td>3 clean matches</td><td>+5</td></tr>
+        <tr><td>Mentor for a week</td><td>+5</td></tr>
+        <tr><td>Host/referee matches</td><td>+2–4</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr><th>Negative Action</th><th>HP Loss</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trash talk/toxicity</td><td>-3</td></tr>
+        <tr><td>Cheating/exploiting</td><td>-5</td></tr>
+        <tr><td>Disrespect or rage quit</td><td>-2 to -5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Titles:</strong> 0-4 Neutral, 5-14 Respected, 15-24 Honorbound, 25-34 Paladin, 35-49 Guardian, 50+ Legend</p>
+  </div>
+
+  <div id="lp" class="section">
+    <h2 class="lp-title">LP - Legacy Points</h2>
+    <table>
+      <thead>
+        <tr><th>Action</th><th>LP Earned</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win major tournament</td><td>+5</td></tr>
+        <tr><td>Host PvP event</td><td>+3</td></tr>
+        <tr><td>Defeat Voidblade Prime</td><td>+4</td></tr>
+        <tr><td>Hold Voidblade title (1 month)</td><td>+3</td></tr>
+        <tr><td>Top performer (3 months)</td><td>+2</td></tr>
+        <tr><td>Hall of Legends</td><td>+5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Legacy Titles:</strong> 10 LP - Veteran, 20 - Flamebearer, 30 - Shadow, 40 - Duelmaster, 50 - Immortal</p>
+    <p class="note">LPs never expire. Holders get privileges like early access, council role, exclusive cosmetics.</p>
+  </div>
+
+  <div id="schedule" class="section">
+    <h2>Weekly Duel Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time Slot</th>
+          <th>Match Type</th>
+          <th>Allowed Ranks</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Casual Warmup</td>
+          <td>All ranks</td>
+          <td>Easy warmup match, perfect for training</td>
+        </tr>
+        <tr>
+          <td>Monday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Mentor vs Rookie</td>
+          <td>Bronze to Silver</td>
+          <td>Higher ranks mentor lower players</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Ranked Duel</td>
+          <td>Silver+</td>
+          <td>Win adds fire★bolt points</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Open Duel</td>
+          <td>All ranks</td>
+          <td>Anyone can challenge anyone</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Randomizer Duel</td>
+          <td>All ranks</td>
+          <td>Opponents assigned randomly</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Tactical Duel (No swords/tools)</td>
+          <td>Gold+</td>
+          <td>Focuses on tactics (bows, blocks, etc.)</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>3:00 – 5:00 PM</td>
+          <td>Free Play Day</td>
+          <td>All ranks</td>
+          <td>Open time for anyone to practice or run custom CS</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Elite Clash</td>
+          <td>Blazing Core+</td>
+          <td>High-tier battle with honor points</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Voidblade Prime Challenge</td>
+          <td>All ranks (if earned)</td>
+          <td>Must request challenge one day before</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Tournament Matches (3 Rounds)</td>
+          <td>Gold+ (w/ qualifiers)</td>
+          <td>Scheduled duels--semi-final and final</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Leader's Event / Fun Match</td>
+          <td>All ranks</td>
+          <td>Random events like tag, potion ban, etc.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div id="rules" class="section">
+    <h1>Fear Killer PvP Provisions</h1>
+    <p>This document serves as the official codified PvP legal framework under the Fear Killer Rule Provisions.</p>
+    <h2>Rules</h2>
+    <ul>
+      <li><strong>No Bed Destruction</strong> - Violator's own bed will be removed.</li>
+      <li><strong>No Fireball Usage</strong> - Banned for knockback abuse.</li>
+      <li><strong>No Knockback Dory</strong> - Trident banned.</li>
+      <li><strong>No Wind Charges</strong></li>
+      <li><strong>No Tactical Totems</strong></li>
+      <li><strong>No Potions or Potion Orbs</strong></li>
+      <li><strong>No Third-Party Interference</strong></li>
+      <li><strong>Rematch Protocol</strong> if agreed or ordered by ref.</li>
+      <li><strong>Referee/Admin Oversight</strong> mandatory.</li>
+      <li><strong>Allowed Items:</strong> Tracker Compass, Bridge Builder, Ender Pearls, Golden Apples.</li>
+      <li><strong>No Spawn Killing</strong></li>
+      <li><strong>No Teaming in FFA</strong></li>
+      <li><strong>Health Reset Between Rounds</strong></li>
+      <li><strong>Match Confirmation & Countdown</strong></li>
+      <li><strong>Map Selection Clause</strong></li>
+      <li><strong>Gear Check by Referee</strong></li>
+    </ul>
+    <h2>Penalties</h2>
+    <ul>
+      <li><strong>1st Offense:</strong> Verbal Warning</li>
+      <li><strong>2nd Offense:</strong> Removal from Server</li>
+      <li><strong>3rd Offense:</strong> PvP Suspension</li>
+    </ul>
+  </div>
+  </body>
+</html>
