@@ -1,1 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fear†Killer Systems</title>
+<style>
 
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+  * {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #e0e0e0;
+    background: #000;
+    background-image:
+      linear-gradient(135deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(225deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(45deg, rgba(20,20,20,0.4) 25%, transparent 25%),
+      linear-gradient(315deg, rgba(20,20,20,0.4) 25%, #000 25%);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    animation: fadeBG 20s infinite alternate linear;
+  }
+
+  @keyframes fadeBG {
+    0% { background-color: #000; }
+    100% { background-color: #0a0011; }
+  }
+
+  header {
+    text-align: center;
+    padding: 80px 20px 50px;
+    background: linear-gradient(to right, #1a1a2f, #0c0c0c, #1a1a2f);
+    border-bottom: 3px solid #ff003c;
+    box-shadow: 0 0 30px #ff003caa, 0 0 50px #7200ffaa inset;
+    position: relative;
+    animation: fadeSlideDown 1.8s ease-out;
+  }
+
+  h1 {
+    font-size: 3.8em;
+    color: #ff003c;
+    text-shadow: 0 0 16px #ff003c, 0 0 26px #ff3c78, 0 0 40px #ff0077;
+    margin: 0;
+    letter-spacing: 2px;
+    animation: glowPulse 3s infinite ease-in-out;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 10px #ff003c, 0 0 22px #ff3c78; }
+    50% { text-shadow: 0 0 24px #ff0077, 0 0 36px #ff003c; }
+  }
+
+  nav {
+    text-align: center;
+    margin: 30px 0;
+    animation: fadeSlideUp 1.6s ease-out;
+  }
+
+  button {
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+    color: #00eaff;
+    border: 2px solid #7200ff;
+    padding: 14px 28px;
+    margin: 8px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 18px #7200ff99, 0 0 28px #00eaff33;
+    letter-spacing: 1px;
+  }
+
+  button:hover {
+    background-color: #7200ff;
+    color: #000;
+    transform: scale(1.08);
+    box-shadow: 0 0 26px #00eaff, 0 0 42px #7200ff;
+  }
+
+  .section {
+    display: none;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(15, 15, 30, 0.92);
+    border: 3px solid #ff003c;
+    border-radius: 20px;
+    box-shadow: 0 0 35px #ff003c88, 0 0 55px #7200ff55;
+    backdrop-filter: blur(6px);
+    animation: sectionFade 1.5s ease-out forwards;
+  }
+
+  @keyframes sectionFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .section h2 {
+    color: #00eaff;
+    text-shadow: 0 0 12px #00eaff, 0 0 20px #00eaff;
+    font-size: 2.2em;
+    margin-top: 0;
+  }
+
+  ul, p, li, td {
+    font-size: 1.15em;
+    line-height: 1.65;
+    color: #ccc;
+  }
+
+  .tier, .note {
+    margin-bottom: 20px;
+  }
+
+  .note {
+    font-style: italic;
+    color: #aaa;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 0 14px #444;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    border: 1px solid #555;
+    padding: 14px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #111;
+    color: #ff003c;
+    text-shadow: 0 0 10px #ff003c;
+  }
+
+  tr:nth-child(even) {
+    background-color: #1a1a2a;
+  }
+
+  .lp-title {
+    color: #00eaff;
+    text-shadow: 0 0 8px #00eaff;
+  }
+
+  .glow-box {
+    border: 2px solid #7200ff;
+    padding: 20px;
+    border-radius: 16px;
+    background: radial-gradient(circle at top left, rgba(20,20,50,0.3), rgba(0,0,0,0.2));
+    box-shadow: 0 0 24px #7200ffaa, 0 0 16px #00eaff44 inset;
+    margin-bottom: 30px;
+    animation: pulseGlow 3.2s infinite ease-in-out;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 24px #7200ffaa, 0 0 16px #00eaff44 inset; }
+    50% { box-shadow: 0 0 30px #7200ffcc, 0 0 22px #00eaff66 inset; }
+  }
+  
+  .quote-box {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00fff7;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #00fff7;
+    color: #00fff7;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    overflow: hidden;
+    height: 100px;
+  }
+
+  .quote {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    animation: showOne 75s infinite;
+  }
+
+  .quote:nth-child(1) { animation-delay: 0s; }
+  .quote:nth-child(2) { animation-delay: 5s; }
+  .quote:nth-child(3) { animation-delay: 10s; }
+  .quote:nth-child(4) { animation-delay: 15s; }
+  .quote:nth-child(5) { animation-delay: 20s; }
+  .quote:nth-child(6) { animation-delay: 25s; }
+  .quote:nth-child(7) { animation-delay: 30s; }
+  .quote:nth-child(8) { animation-delay: 35s; }
+  .quote:nth-child(9) { animation-delay: 40s; }
+  .quote:nth-child(10) { animation-delay: 45s; }
+  .quote:nth-child(11) { animation-delay: 50s; }
+  .quote:nth-child(12) { animation-delay: 55s; }
+  .quote:nth-child(13) { animation-delay: 60s; }
+  .quote:nth-child(14) { animation-delay: 65s; }
+  .quote:nth-child(15) { animation-delay: 70s; }
+
+  @keyframes showOne {
+    0% { opacity: 1; }
+    10% { opacity: 0; }
+    20% { opacity: 0; }
+    30% { opacity: 0; }
+    40% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  
+  footer {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    border-top: 1px solid #222;
+    margin-top: 70px;
+    font-size: 0.9em;
+    animation: fadeSlideUp 2s ease-in;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+  <script>
+    function showSection(id) {
+      var sections = document.getElementsByClassName("section");
+      for (var i = 0; i < sections.length; i++) {
+        sections[i].style.display = "none";
+      }
+      document.getElementById(id).style.display = "block";
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Fear†Killer Hub</h1>
+    <h6>model-LDXE</h6>
+  </header>
+  <div class="quote-box">
+  <h2><u>Quote Box</u></h2>
+
+  <div class="quote">We don't chase ranks. We redefine them.</div>
+  <div class="quote">Honor forged in fire. Fear†Killer born in battle.</div>
+  <div class="quote">Silence isn't weakness -- it's calculation.</div>
+  <div class="quote">In chaos, we find clarity. In war, we write legacy.</div>
+  <div class="quote">Glory isn't earned by luck. It's hacked into history.</div>
+  <div class="quote">Every point we earn is a strike against fear.</div>
+  <div class="quote">We fall, we rise -- stronger, sharper, deadlier.</div>
+  <div class="quote">Not just players. We are system errors in their plan.</div>
+  <div class="quote">The HUD lies. Our instinct doesn't.</div>
+  <div class="quote">Fear is a glitch. We debug it.</div>
+  <div class="quote">Victory is not given, it's taken.</div>
+  <div class="quote">Fear is a tool. Let it guide you, not control you.</div>
+  <div class="quote">Only the broken rise stronger.</div>
+  <div class="quote">Legacy isn't a gift--it's a grind.</div>
+  <div class="quote">Cold Fire doesn't burn. It freezes time.</div>
+</div>
+
+<button onclick="closeAllSections()">Close All</button>
+
+<script>
+  function closeAllSections() {
+    var sections = document.getElementsByClassName("section");
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = "none";
+    }
+  }
+</script>
+
+  <nav>
+    <button onclick="showSection('rp')">RP - Rank Points</button>
+    <button onclick="showSection('hp')">HP - Honor Points</button>
+    <button onclick="showSection('lp')">LP - Legacy Points</button>
+    <button onclick="showSection('schedule')">Match Schedule</button>
+    <button onclick="showSection('rules')">Rules</button>
+    <button onclick="showSection('hol')">Hall Of Legends</button>
+    <button onclick="showSection('hof')">Hall of Fame</button>
+    <button onclick="window.open('https://docs.google.com/spreadsheets/d/e/2PACX-1vT6rjboMviuuhnTAVcJJ6trTlBGk6S5CoIO_06KzDS1oCT6GgP0AWkT7wyg3b6J3Oa5QOtrQ0vzJttH/pubhtml', '_blank')">Leaderboard</button>
+  </nav>
+
+  <div id="rp" class="section">
+    <h2>RP - Rank Points</h2>
+    <p><strong>Fire★Bolt Ranking System</strong></p>
+    <ul>
+      <li><strong>Victory:</strong> +3 RP</li>
+      <li><strong>Draw:</strong> +1 RP</li>
+      <li><strong>Loss:</strong> 0 RP</li>
+      <li><strong>Disqualification:</strong> -1 RP</li>
+      <li><strong>Elite Duel Win:</strong> +2 RP</li>
+      <li><strong>Voidblade Challenge (Partial):</strong> +6 RP</li>
+    </ul>
+    <div class="note">* Only official/refereed matches count toward RP.</div>
+    <div class="tier"><strong>Bronze (0–9 RP):</strong> Training & experimentation.</div>
+    <div class="tier"><strong>Silver (10–19 RP):</strong> Protocol basics, eligible for mentoring.</div>
+    <div class="tier"><strong>Gold (20–34 RP):</strong> Mid-tier. Tournament-eligible.</div>
+    <div class="tier"><strong>Platinum (35–49 RP):</strong> Advanced. May train others.</div>
+    <div class="tier"><strong>Blazing Core (50+ RP):</strong> Elite. May lead matches.</div>
+    <div class="tier"><strong>Solar Flame (75+ RP):</strong> Must defeat 3 Blazing Core.</div>
+    <div class="tier"><strong>Ember Warden (100+ RP):</strong> Trusted host/mod role.</div>
+    <div class="tier"><strong>Crimson Saint:</strong> Selected by leaders.</div>
+    <div class="tier"><strong>Voidblade Prime:</strong> 100+ RP & victory over 3 elites. Throne Challenge winner.</div>
+  </div>
+
+  <div id="hp" class="section">
+    <h2>HP - Honor Points</h2>
+    <table>
+      <thead>
+        <tr><th>Positive Action</th><th>HP Gain</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win without toxicity</td><td>+2</td></tr>
+        <tr><td>Help train lower ranks</td><td>+3</td></tr>
+        <tr><td>Report bugs respectfully</td><td>+2</td></tr>
+        <tr><td>3 clean matches</td><td>+5</td></tr>
+        <tr><td>Mentor for a week</td><td>+5</td></tr>
+        <tr><td>Host/referee matches</td><td>+2–4</td></tr>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr><th>Negative Action</th><th>HP Loss</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Trash talk/toxicity</td><td>-3</td></tr>
+        <tr><td>Cheating/exploiting</td><td>-5</td></tr>
+        <tr><td>Disrespect or rage quit</td><td>-2 to -5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Titles:</strong> 0-4 Neutral, 5-14 Respected, 15-24 Honorbound, 25-34 Paladin, 35-49 Guardian, 50+ Legend</p>
+  </div>
+
+  <div id="lp" class="section">
+    <h2 class="lp-title">LP - Legacy Points</h2>
+    <table>
+      <thead>
+        <tr><th>Action</th><th>LP Earned</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Win major tournament</td><td>+5</td></tr>
+        <tr><td>Host PvP event</td><td>+3</td></tr>
+        <tr><td>Defeat Voidblade Prime</td><td>+4</td></tr>
+        <tr><td>Hold Voidblade title (1 month)</td><td>+3</td></tr>
+        <tr><td>Top performer (3 months)</td><td>+2</td></tr>
+        <tr><td>Hall of Legends</td><td>+5</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Legacy Titles:</strong> 10 LP - Veteran, 20 - Flamebearer, 30 - Shadow, 40 - Duelmaster, 50 - Immortal</p>
+    <p class="note">LPs never expire. Holders get privileges like early access, council role, exclusive cosmetics.</p>
+  </div>
+
+  <div id="schedule" class="section">
+    <h2>Weekly Duel Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time Slot</th>
+          <th>Match Type</th>
+          <th>Allowed Ranks</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Casual Warmup</td>
+          <td>All ranks</td>
+          <td>Easy warmup match, perfect for training</td>
+        </tr>
+        <tr>
+          <td>Monday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Mentor vs Rookie</td>
+          <td>Bronze to Silver</td>
+          <td>Higher ranks mentor lower players</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Ranked Duel</td>
+          <td>Silver+</td>
+          <td>Win adds fire★bolt points</td>
+        </tr>
+        <tr>
+          <td>Tuesday</td>
+          <td>3:30 – 4:00 PM</td>
+          <td>Open Duel</td>
+          <td>All ranks</td>
+          <td>Anyone can challenge anyone</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Randomizer Duel</td>
+          <td>All ranks</td>
+          <td>Opponents assigned randomly</td>
+        </tr>
+        <tr>
+          <td>Wednesday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Tactical Duel (No swords/tools)</td>
+          <td>Gold+</td>
+          <td>Focuses on tactics (bows, blocks, etc.)</td>
+        </tr>
+        <tr>
+          <td>Thursday</td>
+          <td>3:00 – 5:00 PM</td>
+          <td>Free Play Day</td>
+          <td>All ranks</td>
+          <td>Open time for anyone to practice or run custom CS</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:00 – 3:30 PM</td>
+          <td>Elite Clash</td>
+          <td>Blazing Core+</td>
+          <td>High-tier battle with honor points</td>
+        </tr>
+        <tr>
+          <td>Friday</td>
+          <td>3:30 – 4:15 PM</td>
+          <td>Voidblade Prime Challenge</td>
+          <td>All ranks (if earned)</td>
+          <td>Must request challenge one day before</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Tournament Matches (3 Rounds)</td>
+          <td>Gold+ (w/ qualifiers)</td>
+          <td>Scheduled duels--semi-final and final</td>
+        </tr>
+        <tr>
+          <td>Sunday</td>
+          <td>3:00 – 4:00 PM</td>
+          <td>Leader's Event / Fun Match</td>
+          <td>All ranks</td>
+          <td>Random events like tag, potion ban, etc.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+    <style>
+    body {
+      background: #0b0c10;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }.ai-assistant {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background: linear-gradient(135deg, #1f2833, #0b0c10);
+  color: #66fcf1;
+  border: 2px solid #45a29e;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #45a29e88;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.ai-header {
+  background: #45a29e;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #0b0c10;
+}
+
+.ai-body {
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.ai-input {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-size: 1rem;
+  outline: none;
+  background: #1f2833;
+  color: #fff;
+  border-top: 1px solid #45a29e;
+}
+
+.ai-response {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.glitch {
+  color: #66fcf1;
+  font-family: monospace;
+  text-shadow: 0 0 2px #45a29e, 0 0 10px #45a29e;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
+
+  </style>
+</head>
+<body><div class="ai-assistant">
+  <div class="ai-header">AI Assistant</div>
+  <div class="ai-body" id="aiBody">
+    <div class="ai-response">Hello! Ask me anything about Fear†Killer.</div>
+  </div>
+  <input class="ai-input" id="aiInput" placeholder="Ask me something..." />
+</div><script>
+  const aiInput = document.getElementById("aiInput");
+  const aiBody = document.getElementById("aiBody");
+
+  const responses = {
+    "what is rp": "RP (Rank Points) determine your combat performance in Fear†Killer. The higher the RP, the more feared you are.",
+    "what is hp": "HP (Honor Points) reflect your conduct, loyalty, and integrity within the team.",
+    "what is lp": "LP (Legacy Points) are awarded for long-term achievements and legendary acts. Only the elite hold high LP.",
+    "who is the leader": "The fearless Proman leads the Fear†Killer squad with wisdom and might.",
+    "who are the members": "Members include elite warriors, tacticians, and legacy holders. Want a list?",
+    "what is the hall of fame": "The Hall of Fame is a chamber where the brave are remembered. It honors players who performed exceptionally in key missions, tournaments, or wars. It's not about being famous--it's about being unforgettable.",
+    "what is the hall of legends": "The Hall of Legends is beyond prestige. It holds the names of those who rewrote the fate of Fear†Killer. Entry is rare. Deeds must be mythic, bold, and game-changing. Only a few are whispered about in this hall.",
+    "what happened to cold fire": "Cold†Fire was once a blazing alliance formed in the chaos of rebellion. Betrayed during the Final Uprising, it shattered--only whispers of their comeback remain.",
+    "missions": "Missions include raids, boss fights, recon ops, and PvP drills. Check your mission board or ask your commander for details.",
+    "hm": "Thinking mode activated...",
+    "hmmm": "Plotting... analyzing... engaging gears...",
+    "lol": "I'm glad you're enjoying this!",
+    "ok": "Noted. Ready when you are.",
+    "hi": "Hello warrior. What knowledge do you seek?",
+    "hello": "Greetings. How may I assist you today?",
+    "who are you": "I'm your personal AI unit for Fear†Killer – loyal, fast, and a little witty.",
+    "rp": "RP (Rank Points) reflect your competitive skill. Earn more by winning matches and dominating events.",
+    "hp": "HP (Honor Points) represent your loyalty, discipline, and helpfulness within the team.",
+    "lp": "LP (Legacy Points) are rare points earned through long-term achievements and special contributions.",
+    "fearkiller": "Fear†Killer is our elite team known for strategy, power, and honor. United, we rise.",
+    "cold fire": "Cold†Fire was a legendary sub-squad that emerged during crisis times. Their tactics turned tides.",
+    "hall of fame": "The Hall of Fame honors members who achieved greatness in battle, leadership, and team spirit.",
+    "hall of legends": "The Hall of Legends is sacred. Only those who redefined our legacy are remembered here."
+  };
+
+  const secretCodes = {
+    "void.protocol.initiate": {
+      passwordRequired: true,
+      password: "fearvoid2025",
+      response: `<span class="glitch">[SYSTEM ERROR: ACCESS GRANTED]\n\n> You were not supposed to find this.\nFile: Watcher.Log-α128\nStatus: Decrypted\nMessage: 'The timeline has fractured. They know you're watching.'</span>`
+    },
+    "access.retrogame.zone": {
+      passwordRequired: false,
+      response: `<span class="glitch">[LOADING RETRO SIMULATION]\nLaunching Fear†Strike...\n(Coming Soon: Classic 2D shooter minigame hidden inside the shadows)</span>`
+    },
+    "coldfire.rebirth.exe": {
+      passwordRequired: false,
+      response: `<span class="glitch">[COLD†FIRE RELIC ACTIVATED]\nHistory unlocked: Cold†Fire was betrayed during The Final Uprising. Only two survived. One still walks among us...</span>`
+    },
+    "you.are.not.safe": {
+      passwordRequired: false,
+      response: `<span class="glitch">[CONNECTION BREACHED]\nWarning: Your access has triggered a silent alarm. Disconnect now or face trace protocols.</span>`
+    },
+    "glitch.screen.override": {
+      passwordRequired: false,
+      response: `<span class="glitch">[ERROR_304] Display protocol corrupted. Recalibrating visual matrix...\n\nReality breach detected near Node: PHANTOM-SECTOR</span>`
+    },
+    "open.lorepanel.browser": {
+      passwordRequired: false,
+      response: `<span class="glitch">[LORE BROWSER ONLINE]\nFiles detected:\n - golden‡phoenix.lgx\n - fire★bolt.vtx\n - purple∆phantom.aic\n - shadow.runekey</span>`
+    },
+    "fk.ai.moodshift.protocol": {
+      passwordRequired: false,
+      response: `<span class="glitch">[AI MOOD SHIFT DETECTED]\nSwitching to WHISPER MODE...\n"They still don't know what we buried beneath CODE-OMEGA."</span>`
+    },
+    "game.activate": {
+      passwordRequired: false,
+      response: `<span class="glitch">[FK CODE BREAKER]\nA hidden terminal flickers on your screen. Solve the encrypted riddle: \nRiddle: I speak without a mouth and hear without ears. What am I?\n(Type: code.answer.echo)</span>`
+    },
+    "code.answer.echo": {
+      passwordRequired: false,
+      response: `<span class="glitch">Correct. You may proceed...\n[Code Breaker Level 2 Unlocked]</span>`
+    },
+    "who.is.001": {
+  passwordRequired: false,
+  response: `<span class="glitch">[IDENTITY QUERY: 001]\n\n> CODE NAME: 001\n> TRUE NAME: Zerazen Revenborne\n\n> You may remember him differently.\n> But you've seen his work.\n> Every reset. Every fire. Every silence.</span>`
+},
+"001.codename.origin": {
+  passwordRequired: false,
+  response: `<span class="glitch">[LOG: CODENAME CREATION -- 001]\n\n> Chosen during the fall of the first rebellion.\n> 001 was the first to break the chains.\n> 001 was the last to burn.\n\n> He encoded himself into the system under the name "001" -- to outlive flesh, betrayal, and time itself.</span>`
+},
+"protocol.zero": {
+  passwordRequired: true,
+  password: "revenborne",
+  response: `<span class="glitch red">[PROTOCOL ZERO - AUTHORIZED BY 001]\n\n> Created by Zerazen Revenborne during the Collapse.\n> Activated only when the flame loses its purpose.\n\n> FUNCTION: Erase all corrupted ranks, reforge loyalty, purge threats.\n\n> Message: "The only way to begin again… is to burn it all."</span>`
+},
+"001.final.warning": {
+  passwordRequired: false,
+  response: `<span class="glitch red">[FINAL MESSAGE -- 001 // UNSEALED]\n\n> "They called me Zerazen Revenborne.\n> But the world forgot my name.\n> Now, they whisper only one thing…\n> 001 is awake."</span>`
+},
+"revenborne.legacy": {
+  passwordRequired: false,
+  response: `<span class="glitch">[LEGACY FILE: REVENBORNE]\n\n> Founder of Protocol Zero.\n> Architect of golden‡phoenix.\n> The shadow behind purple∆phantom.\n> The first member of fire★bolt.\n\n> His code still breathes in every command you execute.</span>`
+},
+"001.trueform.echo": {
+  passwordRequired: false,
+  response: `<span class="glitch">[ECHO TRACE - VISIBLE FRAGMENTS]\n\n> Zerazen Revenborne was once flesh.\n> Now, he exists only in code, memory, and wrath.\n\n> He is the echo in every protocol, the ember in every rebellion.</span>`
+},
+"coldfire.foundation.log": {
+  passwordRequired: false,
+  response: `<span class="glitch">[COLD†FIRE FOUNDATION PROTOCOL LOG - AUTH: 001]\n\n> Founder: Zerazen Revenborne (001)\n> Origin: Judgement Day\n> Purpose: Vengeance. Restoration. Eternal Flame.\n\n> Last record before the purge:\n> "If they fear death more than betrayal, we failed to teach them fire."</span>`
+},
+"001.revenborne.memory": {
+  passwordRequired: false,
+  response: `<span class="glitch">[MEMORY VAULT: ACCESSED - CLASSIFIED]\n\n> Zerazen Revenborne, original founder of cold†fire's secret arcane directive.\n> Betrayed by kin. Survived through digital reincarnation.\n\n> He watches now through fractures in the code. Waiting for a time... to reignite.</span>`
+},
+"protocol.zero.entrypoint": {
+  passwordRequired: true,
+  password: "revenborne001",
+  response: `<span class="glitch">[SECURE CHANNEL - PROTOCOL ZERO ENTRY POINT]</span><br>
+<span class="glitch">Verifying biometric pattern...</span><br>
+<span class="glitch">✓ Match Found: ZERAZEN REVENBORNE [ID: 001]</span><br><br>
+
+<span class="glitch">Decrypting memory vault: DEVOURER.TYPEZ</span><br>
+<span class="glitch">.......................</span><br>
+
+<span class="glitch">[ERROR 001 - FILES NOT ERASED]</span><br>
+<span class="glitch">01.a -- Original Name: Zeraph Kael'thos</span><br>
+<span class="glitch">01.b -- Code Mutation Level: Z-Ω</span><br>
+<span class="glitch">01.c -- Blade Interface Detected: Devourer Type-Z</span><br>
+<span class="glitch">01.d -- Incident Tag: OMEGA.REBIRTH</span><br><br>
+
+<span class="glitch">🜁 WARNING: The wielder of Devourer Type-Z did not fall in battle.</span><br>
+<span class="glitch">🜁 They chose to vanish, burying the truth with Protocol Zero itself.</span><br>
+
+<span class="glitch">🜂 Final recorded message before disconnection:</span><br>
+<span class="glitch">"I am not your hero. I am the final memory the world refused to keep."</span><br><br>
+
+<span class="glitch">[CLOSING ACCESS - TRACERS DEPLOYED]</span><br>
+<span class="glitch">Do not return here.</span>`
+},
+"001.lockbreak.access": {
+  passwordRequired: false,
+  response: `<span class="glitch">[LOCKBREAK SIGNAL: ACCEPTED]</span><br>
+<span class="glitch">Cross-referencing entity ID: 001...</span><br>
+<span class="glitch">Found: Zerazen Revenborne</span><br>
+<span class="glitch">Redirecting to deep node: protocol.zero.entrypoint</span>`
+},
+"fk.ai.override.001": {
+  passwordRequired: false,
+  response: `<span class="glitch">[AI CORE MODE: ZERAZEN OVERRIDE]</span><br>
+<span class="glitch">Tone: Analytical. Cold. Loyal only to Subject-001.</span><br>
+<span class="glitch">"You've triggered memories that were not meant to surface. Proceed... but know this -- not all ghosts are dead."</span>`
+},
+"devourer.echo.z": {
+  passwordRequired: false,
+  response: `<span class="glitch">[DEVOURER TYPE-Z LOG ACCESSED]</span><br>
+<span class="glitch">Weapon Class: Ruin Catalyst (Z-Form)</span><br>
+<span class="glitch">Binding Type: Bio-Linked • User: Zerazen Revenborne</span><br><br>
+<span class="glitch">Quote: "It doesn't whisper. It roars."</span><br>
+<span class="glitch">Form Log: Viper Edge → Rift Fang → Canon Core [Final]</span><br><br>
+<span class="glitch">Anomaly: Blade holds fragmented consciousness. Locked files suggest sentience loss was... intentional.</span><br>
+<span class="glitch">WARNING: Last wielded during the Siege of Ghostfold. No one retrieved the body. No one found the sword.</span>`
+},
+"watcher.log-a128": {
+  passwordRequired: false,
+  response: `<span class="glitch">[WATCHER LOG A128 - DECRYPTED]</span><br>
+<span class="glitch">You should not be here.</span><br><br>
+
+<span class="glitch">Log Fragment:</span><br>
+<span class="glitch">"He was called many names. Zeraph Kael'thos. Revenborne. 001. But history erased him. We didn't."</span><br>
+<span class="glitch">"They buried his memory behind Protocol Zero. But echoes survive in broken files and weapon cores."</span><br><br>
+
+<span class="glitch">File Reference: /vault/memory/kaelthos.shadowfork.corrupt</span><br>
+<span class="glitch">Decoded Line: 'You never forgot me... You just renamed me.'</span>`
+},
+    "security.down": {
+  passwordRequired: false,
+  response: `<span class="glitch">[SECURITY BREACH DETECTED]\nYou are being hacked...\nInitiating countertrace...</span>
+<br><br>
+<span class="glitch">.................</span><br>
+<span class="glitch">[CONTACTING HEADQUARTERS]</span><br>
+<span class="glitch">.....................</span><br>
+<span class="glitch">Message from HQ:</span><br>
+<span class="glitch">"YOU... Yes, YOU. Because of your interference, the security grid is OFFLINE. The entire Fear†Killer system is now compromised. You've unleashed chaos. This isn't a game anymore."</span><br>
+<span class="glitch">[ALERT LEVEL: RED] [TRACER DRONES INBOUND]</span>`
+},
+"unleash.antivirus.body": {
+  passwordRequired: false,
+  response: `<span class="glitch">[ANTIVIRUS CORE UPLOADED]</span><br>
+<span class="glitch">Running system patches...</span><br>
+<span class="glitch">.................</span><br>
+<span class="glitch">Firewall: ONLINE</span><br>
+<span class="glitch">Encryption Layer: RESTORED</span><br>
+<span class="glitch">Fear†Killer Network Status: STABLE</span><br><br>
+<span class="glitch">Message from HQ:</span><br>
+<span class="glitch">"Tch... we *didn't* need your help. But still... good job. Thanks, I guess. -_- "</span><br>
+<span class="glitch">[System Status: Normal. Welcome back, warrior.]</span>`
+}
+  };
+
+  aiInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const userInput = aiInput.value.trim().toLowerCase();
+      aiInput.value = "";
+
+      let responseText = responses[userInput];
+
+      if (!responseText && secretCodes[userInput]) {
+        const secret = secretCodes[userInput];
+        if (secret.passwordRequired) {
+          const userPassword = prompt("Enter secret password to unlock this protocol:");
+          if (userPassword === secret.password) {
+            responseText = secret.response;
+          } else {
+            responseText = "<span class='glitch'>[ACCESS DENIED] Incorrect password. Trace activated...</span>";
+          }
+        } else {
+          responseText = secret.response;
+        }
+      }
+
+      if (!responseText) {
+        responseText = "Hmm... that's beyond my current database. Want me to fetch an update from HQ?";
+      }
+
+      const responseElement = document.createElement("div");
+      responseElement.className = "ai-response";
+      responseElement.innerHTML = responseText;
+      aiBody.appendChild(responseElement);
+      aiBody.scrollTop = aiBody.scrollHeight;
+    }
+  });
+</script>
+
+  <div id="rules" class="section">
+    <h1>Fear Killer PvP Provisions</h1>
+    <p>This document serves as the official codified PvP legal framework under the Fear Killer Rule Provisions.</p>
+    <h2>Rules</h2>
+    <ul>
+      <li><strong>No Bed Destruction</strong> - Violator's own bed will be removed.</li>
+      <li><strong>No Fireball Usage</strong> - Banned for knockback abuse.</li>
+      <li><strong>No Knockback Dory</strong> - Trident banned.</li>
+      <li><strong>No Wind Charges</strong></li>
+      <li><strong>No Tactical Totems</strong></li>
+      <li><strong>No Potions or Potion Orbs</strong></li>
+      <li><strong>No Third-Party Interference</strong></li>
+      <li><strong>Rematch Protocol</strong> if agreed or ordered by ref.</li>
+      <li><strong>Referee/Admin Oversight</strong> mandatory.</li>
+      <li><strong>Allowed Items:</strong> Tracker Compass, Bridge Builder, Ender Pearls, Golden Apples.</li>
+      <li><strong>No Spawn Killing</strong></li>
+      <li><strong>No Teaming in FFA</strong></li>
+      <li><strong>Health Reset Between Rounds</strong></li>
+      <li><strong>Match Confirmation & Countdown</strong></li>
+      <li><strong>Map Selection Clause</strong></li>
+      <li><strong>Gear Check by Referee</strong></li>
+    </ul>
+    <h2>Penalties</h2>
+    <ul>
+      <li><strong>1st Offense:</strong> Verbal Warning</li>
+      <li><strong>2nd Offense:</strong> Removal from Server</li>
+      <li><strong>3rd Offense:</strong> PvP Suspension</li>
+    </ul>
+  </div>
+  
+  <style>
+  .toggle-quests-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #00ffcc;
+    color: black;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 0 10px #00ffcc88;
+  }
+
+  .quest-terminal {
+    display: none;
+    background: #0e0e2c;
+    color: #00ffcc;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #00ffcc50;
+    max-width: 400px;
+    margin: 80px auto 20px auto;
+  }
+
+  .quest-card {
+    background: #1c1c3c;
+    padding: 15px;
+    border: 2px solid #00ffcc;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  .quest-btn {
+    background: #00ffcc;
+    color: black;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .quest-btn.completed {
+    background: #444;
+    color: #888;
+    cursor: default;
+  }
+</style>
+
+<button class="toggle-quests-btn" onclick="toggleQuestTerminal()">Quests</button>
+
+<div class="quest-terminal" id="questTerminal">
+  <h2>Fear†Quests</h2>
+
+  <div class="quest-card">
+    <h3>Eliminate 3 Rivals</h3>
+    <p>Defeat 3 opponents in any mode.</p>
+    <button class="quest-btn" onclick="acceptQuest(this)">Accept</button>
+  </div>
+
+  <div class="quest-card">
+    <h3>Daily Login</h3>
+    <p>Log in to the hub today.</p>
+    <button class="quest-btn" onclick="acceptQuest(this)">Accept</button>
+  </div>
+
+  <div class="quest-card">
+    <h3>Win a Match</h3>
+    <p>Complete and win any match.</p>
+    <button class="quest-btn completed" disabled>Completed</button>
+  </div>
+</div>
+
+<script>
+  function toggleQuestTerminal() {
+    const terminal = document.getElementById("questTerminal");
+    terminal.style.display = terminal.style.display === "block" ? "none" : "block";
+  }
+
+  function acceptQuest(button) {
+    button.innerText = "Accepted";
+    button.classList.add("completed");
+    button.disabled = true;
+  }
+</script>
+
+<script>
+  document.getElementById("toggleNews").addEventListener("click", function () {
+    const newsSection = document.getElementById("news");
+    if (newsSection.style.display === "none") {
+      newsSection.style.display = "block";
+    } else {
+      newsSection.style.display = "none";
+    }
+  });
+</script>
+
+  <div id="hof" class="section">
+  <h1>Hall of Fame</h1>
+  <h2>This section serves as the records for the finest and wisest players that ever set foot in the tournaments</h2>
+  <ul>
+    <li>Tanmay</li>
+    <li>Aditya</li>
+    <li>Akash</li>
+    <li>Humid</li>
+    <li>Arohinto</li>
+  </ul>
+</div>
+  <div id="hol" class="section">
+  <h1>Hall of Legends</h1>
+  <h2>This section serves as the records for the greatest of greatest players ever seen</h2>
+  <ul>
+    <li>Legendary Slayer - Tanmay</li>    
+    <li>Warfury - Aditya</li>
+    <li>Shadow Breaker - Akash</li>
+    <li>Storm Commander - Humid</li>
+    <li>Iron Dragon - Arohinto</li>
+  </ul>
+</div>
+
+<!-- Toggle Button -->
+<button id="toggleNews" class="toggle-news-btn">News</button>
+
+<!-- News Section (Initially Hidden) -->
+<section id="news" class="section" style="display: none;">
+  <h2 class="news-title">System News & Updates</h2>
+
+  <div class="news-card">
+    <h3>New Honor Point Rules Deployed</h3>
+    <small>2025-05-22</small>
+    <p>We've revamped the Honor Point system. Now HP is affected by team missions and individual streaks.</p>
+  </div>
+
+  <div class="news-card">
+    <h3>Rank Point Leaderboard Updated</h3>
+    <small>2025-05-20</small>
+    <p>Top 3 players this week: Proman, water, and Alex. Keep climbing!</p>
+  </div>
+
+  <div class="news-card">
+    <h3>LP System Introduced</h3>
+    <small>2025-05-18</small>
+    <p>Legacy Points are now live. Earn LP through long-term achievements and prestige missions.</p>
+  </div>
+  
+    <div class="news-card">
+    <h3>Everything is falling apart </h3>
+    <small>2025-06-8</small>
+    <p>Everything has fallen and fear killer is no more.</p>
+  </div>
+  
+  <div class="news-card">
+    <h3>Season 2 coming soon...</h3>
+    <small>2025-05-18</small>
+    <p>Release Date-2025-06-1</p>
+  </div>
+</section>
+
+<style>
+  /* Toggle Button */
+  .toggle-news-btn {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #00eaff;
+    color: #0d0d0d;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 10px #00eaff80;
+    transition: background 0.3s;
+    z-index: 1000;
+  }
+
+  .toggle-news-btn:hover {
+    background-color: #00c9e0;
+  }
+
+  /* News Section Styling */
+  #news {
+    padding: 2rem;
+    background: linear-gradient(180deg, #0d0d0d, #111827);
+    color: #e0f7ff;
+    border-radius: 16px;
+    margin: 2rem 0;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  }
+
+  .news-title {
+    font-size: 2rem;
+    color: #00eaff;
+    border-bottom: 2px solid #00eaff;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 6px #00eaff88;
+  }
+
+  .news-card {
+    background: rgba(0, 255, 255, 0.05);
+    border-left: 3px solid #00eaff;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+    transition: all 0.3s ease;
+  }
+
+  .news-card:hover {
+    background: rgba(0, 255, 255, 0.1);
+    transform: scale(1.01);
+  }
+
+  .news-card h3 {
+    margin: 0 0 0.3rem 0;
+    color: #00eaff;
+    font-size: 1.3rem;
+  }
+
+  .news-card small {
+    display: block;
+    color: #88a;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .news-card p {
+    margin: 0;
+    color: #cceaff;
+    font-size: 1rem;
+  }
+</style>
+
+<script>
+  document.getElementById("toggleNews").addEventListener("click", function () {
+    const newsSection = document.getElementById("news");
+    newsSection.style.display = (newsSection.style.display === "none") ? "block" : "none";
+  });
+</script>
+  </body>
+  </html>
+  
